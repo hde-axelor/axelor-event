@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
+     
+     <module package="com.axelor.event.db" name="event"/>
+     
+     <entity name="Event">
+      
+         <string name="reference" namecolumn="true" title="Reference"/>
+         <datetime name="startDate" title="Start date"/>
+         <datetime name="endDate" title="End date"/>
+         
+         <many-to-one ref="com.axelor.event.db.Address" name="venue" title="Venue"/>
+         
+         <date name="registartionOpen" title="Registration open"/>
+         <date name="registrationClose" title="Registration close"/>
+         <integer name="capacity" title="Capacity"/>
+         <decimal name="eventFees" title="Event fees"/>
+         <string name="description" title="Description"/>
+         
+         <one-to-many ref="com.axelor.event.db.Discount" name="discounts" title="Discounts"/>
+         
+         <one-to-many ref="com.axelor.event.db.EventRegistration" name="eventRegistrations" title="Event regestration" mappedBy="event"/>
+         
+         <integer name="totalEntry" readonly="true" title="Total entry"/>
+         <decimal name="amountCollected" readonly="true" title="Amount collected"/>
+         <decimal name="totalDiscount" readonly="true" title="Total discount"/>
+         
+      
+     </entity>
+  
+  </domain-models>

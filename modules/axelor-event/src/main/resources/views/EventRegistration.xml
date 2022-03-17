@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+   <grid model="com.axelor.event.db.EventRegistration" title="Event Registration" name="event-registration-grid">
+       
+       <field name="name"/>
+       <field name="email"/>
+       <field name="address"/>
+       <field name="registrationDate"/>
+       <field name="amount"/>
+       <field name="emailSent" widget="boolean"/>
+     
+       
+   </grid>
+   
+   <form model="com.axelor.event.db.EventRegistration" title="Event Registration" name="event-registration-form" onNew="hide-event" >
+     <panel>
+       <field name="name" required="true"/>
+       <field name="event"/>
+       <field name="email"  pattern="^[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})$"/>
+       <field name="address"/>
+       <field name="registrationDate" onChange="save,event-regestration-amount" />
+       <field name="amount"/>
+       <field name="emailSent" widget="boolean" readonly="true"/>
+    </panel>
+   </form>
+   
+   
+   <action-method name="event-regestration-amount">
+     <call class="com.axelor.event.web.EventRegistartionController" method="eventRegistrationAmount"/>
+   </action-method>
+   
+   <action-attrs name="hide-event">
+		<attribute name="hidden" for="event" expr="true" if="__parent__"/>
+	</action-attrs>
+   
+
+  </object-views>

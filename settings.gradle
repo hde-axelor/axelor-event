@@ -1,0 +1,6 @@
+rootProject.name= 'axelor-event-app'
+
+include "modules:axelor-event"
+include "modules:axelor-message"
+include "modules:axelor-tool"
+include "modules:axelor-exception"
